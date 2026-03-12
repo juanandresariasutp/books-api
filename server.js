@@ -1,8 +1,9 @@
 const { loadEnvFile } = require('node:process');
+const { existsSync } = require('node:fs');
 const express = require('express');
 const booksRouter = require('./routes/books');
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' && existsSync('.env')) {
   loadEnvFile('.env');
 }
 
